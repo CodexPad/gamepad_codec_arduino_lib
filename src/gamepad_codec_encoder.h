@@ -1,0 +1,78 @@
+#pragma once
+
+#ifndef _GAMEPAD_CODEC_ENCODER_H_
+#define _GAMEPAD_CODEC_ENCODER_H_
+
+#include <stddef.h>
+#include <stdint.h>
+
+#include "gamepad_codec_data_type.h"
+#include "gamepad_input_tracker.h"
+#include "robust_frame.h"
+
+/**
+ * @file gamepad_codec_encoder.h
+ */
+
+namespace gamepad::codec {
+
+/**
+ * @~English
+ * @brief The maximum length of the encoded frame.
+ */
+/**
+ * @~Chinese
+ * @brief 编码后帧的最大长度。
+ */
+#if __cplusplus >= 201703L
+constexpr inline size_t kMaxEncodedFrameLength = robust_frame::MaxSerializedLength(kDataTypeGamepadInputStateSize);
+#else
+static constexpr size_t kMaxEncodedFrameLength = robust_frame::MaxSerializedLength(kDataTypeGamepadInputStateSize);
+#endif
+
+/**
+ * @~English
+ * @brief Encode a gamepad::input::State into a robust frame.
+ * @param state        The input state to encode.
+ * @param output       Pointer to the output buffer. Must be at least @ref
+ * kMaxEncodedFrameLength bytes.
+ * @param output_length Pointer to a size_t that receives the actual number of
+ * bytes written.
+ * @return The `output` pointer, for convenient chaining.
+ * @note The encoded frame is compatible with `gamepad::codec::Decoder`.
+ */
+/**
+ * @~Chinese
+ * @brief 将 gamepad::input::State 编码为健壮帧。
+ * @param state        待编码的输入状态。
+ * @param output       输出缓冲区指针，必须至少为 @ref kMaxEncodedFrameLength
+ * 字节。
+ * @param output_length 指向 size_t 的指针，用于接收实际写入的字节数。
+ * @return 返回 `output` 指针，方便链式调用。
+ * @note 编码后的帧与 `gamepad::codec::Decoder` 兼容。
+ */
+uint8_t *Encode(const gamepad::input::State &state, uint8_t *output, size_t *output_length) noexcept;
+
+/**
+ * @~English
+ * @brief Encode a gamepad::input::State into a robust frame and send directly
+ * to a Stream.
+ * @param state   The input state to encode.
+ * @param stream  The output stream (e.g., Serial, SoftwareSerial, etc.) to
+ * write the frame to.
+ * @note The encoded frame is compatible with `gamepad::codec::Decoder`.
+ * @note This function is useful for sending frames directly without an
+ * intermediate buffer.
+ */
+/**
+ * @~Chinese
+ * @brief 将 gamepad::input::State 编码为健壮帧并直接发送到 Stream。
+ * @param state 待编码的输入状态。
+ * @param stream 输出流（如 Serial、SoftwareSerial 等），用于写入帧数据。
+ * @note 编码后的帧与 `gamepad::codec::Decoder` 兼容。
+ * @note 此函数适用于无需中间缓冲区，直接发送帧的场景。
+ */
+void Encode(const gamepad::input::State &state, Stream &stream) noexcept;
+}  // namespace gamepad::codec
+
+#endif
