@@ -72,10 +72,9 @@ class Decoder {
 
   void OnFrame(const uint8_t *data, size_t data_length);
 
+  Stream &stream_;
   robust_frame::Parser parser_;
   gamepad::input::Tracker input_tracker_;
-
-  Stream &stream_;
 };
 
 }  // namespace gamepad::codec

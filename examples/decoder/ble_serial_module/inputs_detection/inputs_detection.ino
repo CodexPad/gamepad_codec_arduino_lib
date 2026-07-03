@@ -214,7 +214,7 @@ void loop() {
   // ==========================================================================
   // 🔴 CRITICAL: Call Update() as frequently as possible in loop()
   // ==========================================================================
-  // • Update() processes incoming Bluetooth packets from the CodexPad
+  // • Update() processes incoming Bluetooth packets from the gamepad.
   // • Any delay(...) or long blocking code WILL cause:
   //     - Packet loss
   //     - Input lag
@@ -224,7 +224,7 @@ void loop() {
   //   without any blocking operations
   //
   // 🔴【重要】Update() 必须在 loop() 中尽可能高频调用
-  // • Update() 负责处理来自 CodexPad 的蓝牙数据包
+  // • Update() 负责处理来自手柄的蓝牙数据包。
   // • 任何形式的 delay 或阻塞代码都会导致：
   //     - 数据丢失
   //     - 响应延迟
