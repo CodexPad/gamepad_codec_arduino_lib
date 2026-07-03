@@ -1,8 +1,8 @@
 
 /**
  * @~English
- * @file decoder/ble_uno_or_nl_16_module/basic_polling/basic_polling.ino
- * @example decoder/ble_uno_or_nl_16_module/basic_polling/basic_polling.ino
+ * @file decoder/ble_serial_module/basic_polling/basic_polling.ino
+ * @example decoder/ble_serial_module/basic_polling/basic_polling.ino
  * @brief The demonstration regularly prints the status of all buttons and joystick values using a basic polling method.
  * @details This example first sends AT commands to connect to a target device, then enters a simple polling loop. Every 30
  *          milliseconds, it prints the current state of all buttons (pressed/released) and the raw analog values (0‑255) of
@@ -15,8 +15,8 @@
  */
 /**
  * @~Chinese
- * @file decoder/ble_uno_or_nl_16_module/basic_polling/basic_polling.ino
- * @example decoder/ble_uno_or_nl_16_module/basic_polling/basic_polling.ino
+ * @file decoder/ble_serial_module/basic_polling/basic_polling.ino
+ * @example decoder/ble_serial_module/basic_polling/basic_polling.ino
  * @brief 演示通过基本轮询方式定期打印所有按钮状态与摇杆值。
  * @details 本示例先通过 AT 指令连接到指定的蓝牙设备，然后进入轮询循环。
  *          每隔 30 毫秒，它会打印所有按钮的当前状态（按下/弹起）以及两个摇杆的原始模拟值（0‑255）。
@@ -153,7 +153,7 @@ void loop() {
   // ==========================================================================
   // 🔴 CRITICAL: Call Update() as frequently as possible in loop()
   // ==========================================================================
-  // • Update() processes incoming Bluetooth packets from the CodexPad
+  // • Update() processes incoming Bluetooth packets from the gamepad.
   // • Any delay(...) or long blocking code WILL cause:
   //     - Packet loss
   //     - Input lag
@@ -163,7 +163,7 @@ void loop() {
   //   without any blocking operations
   //
   // 🔴【重要】Update() 必须在 loop() 中尽可能高频调用
-  // • Update() 负责处理来自 CodexPad 的蓝牙数据包
+  // • Update() 负责处理来自手柄的蓝牙数据包。
   // • 任何形式的 delay 或阻塞代码都会导致：
   //     - 数据丢失
   //     - 响应延迟
