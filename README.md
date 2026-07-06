@@ -247,7 +247,7 @@ After running the example program, debug information (such as button events and 
 
 ## API Reference
 
-Full API documentation: <https://codexpad.github.io/gamepad_codec_arduino_lib/html/annotated.html>
+Full API documentation: <https://codexpad.github.io/gamepad_codec_arduino_lib/html/en/index.html>
 
 ## License
 
