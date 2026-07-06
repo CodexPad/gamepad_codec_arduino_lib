@@ -247,7 +247,7 @@ NL-16 BLE转串口模块需要配合开发板进行使用。
 
 ## API说明
 
-详情链接：<https://codexpad.github.io/gamepad_codec_arduino_lib/html/zh-CN/zh-CN/index.html>
+详情链接：<https://codexpad.github.io/gamepad_codec_arduino_lib/html/zh-CN/index.html>
 
 ## 许可证
 
